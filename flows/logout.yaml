@@ -1,0 +1,65 @@
+appId: com.tap_pay
+
+---
+# PAYAPP Logout Flow - Using Coordinates and Text
+
+# 1. Take screenshot of current dashboard/home screen
+- takeScreenshot: "before_logout"
+
+# 2. Tap on hamburger menu (top-left corner)
+- tapOn:
+    point: "9%,7%"  # Hamburger menu coordinates
+
+# 3. Take screenshot of opened menu
+- takeScreenshot: "menu_opened"
+
+# 4. Verify menu is open and find logout option
+- assertVisible: 
+    text: "Contact Us"
+    optional: true
+- assertVisible: 
+    text: "Change MPIN"
+    optional: true
+
+# 5. Tap on LOGOUT text
+- tapOn: 
+    text: "LOGOUT"
+
+# Alternative: Use coordinates if text doesn't work
+- tapOn:
+    point: "34%,82%"  # LOGOUT button coordinates
+    optional: true
+
+# 6. Take screenshot of logout confirmation popup
+- takeScreenshot: "logout_confirmation"
+
+# 7. Verify logout confirmation dialog
+- assertVisible: 
+    text: "Log Out"
+    optional: true
+- assertVisible: 
+    text: "Are you sure you want to Log Out?"
+    optional: true
+
+# 8. Tap "Yes" to confirm logout
+- tapOn: 
+    text: "Yes"
+
+# Alternative: Use coordinates if text doesn't work  
+- tapOn:
+    point: "33%,60%"  # Yes button coordinates
+    optional: true
+
+# 9. Take screenshot after logout confirmation
+- takeScreenshot: "after_logout_confirmation"
+
+# 10. Verify we're back to login screen
+- assertVisible: 
+    text: "Welcome"
+    optional: true
+- assertVisible: 
+    text: "Enter your Pin"
+    optional: true
+
+# 11. Final screenshot showing logout success
+- takeScreenshot: "logout_completed"

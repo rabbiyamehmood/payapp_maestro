@@ -1,0 +1,6 @@
+appId: com.android.settings # Using system settings app for testing
+---
+# Simple test to verify Maestro setup
+- launchApp
+- assertVisible: "Settings"
+- takeScreenshot: "maestro_test"
