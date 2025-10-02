@@ -1,0 +1,49 @@
+appId: com.tap_pay
+
+---
+# PAYAPP Login Flow - Using Coordinates and Text
+
+# 1. Launch the PAY app from home screen
+- tapOn: 
+    text: "PAY"
+
+# 2. Wait for app to fully load and take screenshot
+- takeScreenshot: "app_launched"
+
+# 3. Verify we're on the login screen
+- assertVisible: 
+    text: "Welcome"
+    optional: true
+- assertVisible: 
+    text: "Enter your credentials to log in to your account"
+    optional: true
+
+# 4. Tap on the PIN input field
+- tapOn: 
+    text: "Enter your Pin"
+
+# 5. Enter PIN digits one by one using coordinates
+- tapOn:
+    point: "11%,55%"  # First digit position
+- inputText: "1"
+
+- tapOn:
+    point: "37%,55%"  # Second digit position  
+- inputText: "2"
+
+- tapOn:
+    point: "63%,55%"  # Third digit position
+- inputText: "1"
+
+- tapOn:
+    point: "89%,55%"  # Fourth digit position
+- inputText: "2"
+
+# 6. PIN entered - app will login automatically
+# No Sign In button needed - automatic login after PIN entry
+
+# 7. Take screenshot after PIN entry (should show login progress or success)
+- takeScreenshot: "after_pin_entry"
+
+# 8. Take final success screenshot
+- takeScreenshot: "login_completed"

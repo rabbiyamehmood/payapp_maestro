@@ -1,0 +1,30 @@
+# PAYAPP Maestro Configuration
+
+# Test Data
+test_credentials:
+  valid_pin: "1212"
+  invalid_pin: "0000"
+  incomplete_pin: "12"
+  long_pin: "12345"
+
+# App Configuration
+app:
+  package_name: "com.yourcompany.payapp"  # Update with actual PAYAPP package name
+  launch_timeout: 10000
+  
+# Login Flow Notes:
+# - Mobile number is pre-filled in the app
+# - Only PIN entry is required
+# - Login happens automatically after PIN entry
+# - No manual login button tap needed
+  
+# Device Configuration
+device:
+  platform: "android"  # or "ios"
+  
+# Test Configuration
+timeouts:
+  default: 5000
+  login_process: 10000
+  element_wait: 3000
+  pin_entry: 2000
