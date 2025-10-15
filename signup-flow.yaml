@@ -1,0 +1,45 @@
+appId: com.tap_pay
+---
+# PayApp Signup Flow
+# This flow automates the signup process for the PayApp
+
+# Step 1: Start from Welcome screen (launch app manually before running test)
+# Wait for Welcome screen
+- assertVisible: "Welcome"
+
+# Step 2: Navigate to signup screen - Click on "Sign Up Here"
+- tapOn: "Sign Up Here"
+
+# Step 3: Accept Terms and Conditions page
+# Wait a moment for the page to load
+- extendedWaitUntil:
+    visible: "I have read and agree to the Terms and Conditions"
+    timeout: 10000
+
+# Check the "I have read and agree to the Terms and Conditions" checkbox
+- tapOn:
+    point: "8%,81%"  # Checkbox location
+
+# Step 4: Click continue button to move to next screen
+- tapOn:
+    point: "50%,90%"  # Continue/Next button
+
+# Step 5: Enter name in "What's your name?" field
+- assertVisible: "What's your name?"
+- tapOn:
+    point: "51%,43%"  # Name input field
+- inputText: "Rabyaaa"
+
+# Step 6: Click continue button to move to next screen
+- tapOn:
+    point: "50%,63%"  # Continue button
+
+# Step 7: Enter mobile number in "Enter Your Mobile Number?" field
+- assertVisible: "Enter Your Mobile Number?"
+- tapOn:
+    point: "51%,43%"  # Mobile number input field
+- inputText: "03318098098"
+
+# Step 8: Click continue button to move forward
+- tapOn:
+    point: "50%,63%"  # Continue button

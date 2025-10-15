@@ -1,0 +1,84 @@
+appId: com.tap_pay
+---
+# PayApp Signup Flow - Extended Version
+# This flow automates the signup process for the PayApp
+
+# Step 1: Start from Welcome screen (launch app manually before running test)
+# Wait for Welcome screen
+- assertVisible: "Welcome"
+
+# Step 2: Navigate to signup screen - Click on "Sign Up Here"
+- tapOn: "Sign Up Here"
+
+# Step 3: Accept Terms and Conditions page
+# Wait a moment for the page to load
+- extendedWaitUntil:
+    visible: "I have read and agree to the Terms and Conditions"
+    timeout: 10000
+
+# Check the "I have read and agree to the Terms and Conditions" checkbox
+- tapOn:
+    point: "8%,81%"  # Checkbox location
+
+# Step 4: Click continue button to move to next screen
+- tapOn:
+    point: "50%,90%"  # Continue/Next button
+
+# Step 5: Enter name in "What's your name?" field
+- assertVisible: "What's your name?"
+- tapOn:
+    point: "51%,43%"  # Name input field
+- inputText: "Rabeeyaa"
+
+# Step 6: Click continue button to move to next screen
+- tapOn:
+    point: "50%,63%"  # Continue button
+
+# Step 7: Enter mobile number in "Enter Your Mobile Number?" field
+- assertVisible: "Enter Your Mobile Number?"
+- tapOn:
+    point: "51%,43%"  # Mobile number input field
+- inputText: "03312929454"
+
+# Step 8: Click continue button to move forward
+- tapOn:
+    point: "50%,63%"  # Continue button
+
+# Step 9: OTP Entry Screen
+# NOTE: Manual action required - Enter OTP manually on the device
+# The automation will wait for the OTP screen to complete and move to next screen
+- assertVisible: 
+    text: "OTP"
+    optional: true
+
+# Wait for PIN screen after OTP is entered manually
+- extendedWaitUntil:
+    visible: "Login PIN"
+    timeout: 30000  # Wait up to 30 seconds for manual OTP entry
+
+# Step 10: Enter PIN in "Enter PIN" field (4-digit PIN: 1212)
+- assertVisible: "Login PIN"
+- assertVisible: "Enter PIN"
+- tapOn:
+    point: "17%,41%"  # Enter PIN - First box
+- inputText: "1212"  # PIN will be entered and masked as ****
+
+# Step 11: Enter PIN in "Re-enter PIN" field (same PIN: 1212)
+- assertVisible: "Re-enter PIN"
+- tapOn:
+    point: "17%,54%"  # Re-enter PIN - First box
+- inputText: "1212"  # Same PIN as above
+
+# Close the keyboard so the continue button becomes visible
+- hideKeyboard
+
+# Wait a moment for the button to be ready
+- extendedWaitUntil:
+    visible: "Login PIN"
+    timeout: 2000
+
+# Step 12: Click continue/submit button to proceed
+- tapOn:
+    point: "50%,72%"  # Continue button (blue arrow button)
+
+# Step 13: Add next steps here...
