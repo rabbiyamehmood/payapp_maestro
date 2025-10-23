@@ -1,0 +1,87 @@
+appId: com.tap_pay
+---
+# First Login Flow for PAJ App after Signup
+# Complete automation flow for first time login
+
+# Step 1: Launch the PAJ app
+- tapOn: "PAY"
+
+# Step 2: Enter PIN (Mobile number is already filled: 03312121213)
+# Enter PIN: 1212 in the 4 digit boxes
+- tapOn:
+    point: "11%,55%"
+- inputText: "1"
+
+- tapOn:
+    point: "37%,55%" 
+- inputText: "2"
+
+- tapOn:
+    point: "63%,55%"
+- inputText: "1"
+
+- tapOn:
+    point: "89%,55%"
+- inputText: "2"
+
+# After entering PIN, app automatically signs in
+# Step 3: Accept Terms and Conditions
+# Scroll down to reach point 34 "ENTIRE AGREEMENT" where checkbox becomes visible
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+- scroll
+
+# After scrolling to point 34 (end), directly click the checkbox using coordinates
+# Tap on the actual checkbox instead of the text
+- tapOn:
+    point: "8%,81%"
+
+# Click the forward/next button to proceed
+- tapOn:
+    point: "50%,90%"
+
+# Step 4: Skip Fingerprint Setup on Dashboard
+# When fingerprint popup appears, click "No" to skip using coordinates
+- tapOn:
+    point: "67%,58%"
+
+# Verify successful login - dashboard is visible with navigation items
+- assertVisible: "SoftPOS"
+- assertVisible: "Transactions"
+- assertVisible: "Contact Us"
